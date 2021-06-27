@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".FgActivity">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.flighgearapp.ViewModel" />
+    </data>
+
+
+    <LinearLayout
+        android:id="@+id/run_part"
+        android:layout_width="411dp"
+        android:layout_height="710dp"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp">
+
+        <EditText
+            android:id="@+id/ip_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/ip"
+            android:inputType="textPersonName"
+            android:text="@={viewModel.ip}" />
+
+        <EditText
+            android:id="@+id/port_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/port"
+            android:inputType="number"
+            android:text="@={viewModel.port}" />
+
+        <Button
+            android:id="@+id/connect_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->viewModel.connect()}"
+            android:text="@string/connect"
+            app:backgroundTint="#FF6E40"
+            app:icon="@android:drawable/ic_menu_send"
+            app:iconPadding="-250dp"
+            app:iconTint="#18FFFF"
+            app:iconTintMode="multiply" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="419dp">
+
+            <SeekBar
+                android:id="@+id/seekBar"
+                android:layout_width="213dp"
+                android:layout_height="431dp"
+                android:layout_marginStart="-50dp"
+                android:fadingEdge="none"
+                android:max="1000"
+                android:progress="@={viewModel.throttel}"
+                android:rotation="-90"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="-10dp" />
+
+            <com.example.flighgearapp.Joystick
+                android:id="@+id/joiystick"
+                android:layout_width="265dp"
+                android:layout_height="267dp"
+                android:layout_marginEnd="4dp"
+                app:layout_constraintBottom_toTopOf="@+id/space"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <Space
+                android:id="@+id/space"
+                android:layout_width="136dp"
+                android:layout_height="73dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:layout_editor_absoluteX="233dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <SeekBar
+            android:id="@+id/rudder_seek"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:max="1000"
+            android:min="-1000"
+            android:progress="@={viewModel.rudder}" />
+
+    </LinearLayout>
+
+
+</layout>

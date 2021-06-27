@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">FlighGearApp</string>
+    <string name="ip">IP</string>
+    <string name="port">Port</string>
+    <string name="connect">Connect</string>
+</resources>
